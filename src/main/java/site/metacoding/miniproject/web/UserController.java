@@ -4,7 +4,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,7 +52,12 @@ public class UserController {
   //메인 페이지
     @GetMapping({"/mainForm","/"})
     public String mainForm() {
-    	return "board/main";
+        return "board/main";
+        
     }
-    
+    @DeleteMapping("/deleteuser/{userid}")
+    public @ResponseBody CMRespDto<?> deleteUserId(@PathVariable Integer userid) {
+        userService.유저삭제하기(userid);
+        return new CMRespDto<>(userid, "유저삭제완료", null);
+    }
 }

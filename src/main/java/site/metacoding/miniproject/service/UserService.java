@@ -29,4 +29,7 @@ public class UserService {
 		return userPS;
 	}
 
+	public void 유저삭제하기(Integer userId) {
+		userDao.deleteUserId(userId);
+	}
 }
