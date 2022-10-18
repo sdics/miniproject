@@ -50,7 +50,8 @@ public class UserController {
   //메인 페이지
     @GetMapping({"/mainForm","/"})
     public String mainForm() {
-    	return "board/main";
+        return "board/main";
+        
     }
     
 }
